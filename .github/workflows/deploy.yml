@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install missing native binding
-        run: npm install @tailwindcss/oxide-linux-x64-gnu
-
       - name: Build
         run: npm run build
         env:
