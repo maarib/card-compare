@@ -1,6 +1,6 @@
 export type RewardType = "cashback" | "points" | "miles";
 export type Network = "Visa" | "Mastercard" | "Amex";
-export type Category = "cashback" | "travel" | "grocery" | "no-fee" | "business" | "student" | "rewards" | "premium";
+export type Category = "cashback" | "travel" | "grocery" | "no-fee" | "business" | "student" | "rewards" | "premium" | "dining";
 
 export interface EarnRates {
   groceries: number;
