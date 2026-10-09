@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { cards as allCards, categories } from "@/data/cards";
+import { cards as allCards, categories, issuers } from "@/data/cards";
 import type { CreditCard } from "@/types/card";
 import CardSelector from "@/components/CardSelector";
 import ComparisonTable from "@/components/ComparisonTable";
-import FilterBar from "@/components/FilterBar";
 
 const MAX_COMPARE = 5;
 
@@ -16,8 +15,11 @@ export default function Home() {
 
   const filteredCards = useMemo(() => {
     return allCards.filter((c) => {
-      const matchCat = activeCategory === "all" || c.categories.includes(activeCategory as CreditCard["categories"][number]);
-      const matchIssuer = activeIssuer === "All Issuers" || c.issuer === activeIssuer;
+      const matchCat =
+        activeCategory === "all" ||
+        c.categories.includes(activeCategory as CreditCard["categories"][number]);
+      const matchIssuer =
+        activeIssuer === "All Issuers" || c.issuer === activeIssuer;
       return matchCat && matchIssuer;
     });
   }, [activeCategory, activeIssuer]);
@@ -40,53 +42,92 @@ export default function Home() {
     setSelected((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const clearFilters = () => {
+    setActiveCategory("all");
+    setActiveIssuer("All Issuers");
+    setSelected((prev) => prev.map(() => null));
+  };
+
   const activeCount = selected.filter(Boolean).length;
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-10">
-      {/* Hero */}
+    <main className="max-w-7xl mx-auto px-5 sm:px-8 py-10">
+
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <div className="mb-10">
-        <h1 className="text-black dark:text-white text-2xl font-semibold tracking-tight mb-1.5">
+        <h1 className="text-black dark:text-white text-2xl sm:text-3xl font-semibold tracking-tight mb-2">
           Compare Canadian Credit Cards
         </h1>
         <p className="text-black/40 dark:text-white/40 text-sm">
-          Side-by-side comparison of fees, earn rates, insurance, and perks.
+          Side-by-side comparison of fees, earn rates, insurance, and perks across{" "}
+          <span className="text-black/60 dark:text-white/60">{allCards.length} cards</span> from{" "}
+          {issuers.length} issuers.
         </p>
       </div>
 
-      {/* Filters */}
-      <div className="mb-6">
-        <FilterBar
-          activeCategory={activeCategory}
-          activeIssuer={activeIssuer}
-          onCategoryChange={(cat) => {
-            setActiveCategory(cat);
+      {/* ── Filters ───────────────────────────────────────────────────────── */}
+      <div className="mb-7 flex flex-wrap items-center gap-2">
+        {/* category pills */}
+        {categories.map((cat) => (
+          <button
+            key={cat.value}
+            onClick={() => {
+              setActiveCategory(cat.value);
+              setSelected((prev) => prev.map(() => null));
+            }}
+            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+              activeCategory === cat.value
+                ? "bg-black dark:bg-white text-white dark:text-black"
+                : "bg-black/5 dark:bg-white/5 text-black/50 dark:text-white/50 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black/80 dark:hover:text-white/80"
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+
+        {/* divider */}
+        <div className="w-px h-4 bg-black/12 dark:bg-white/12 mx-1" />
+
+        {/* issuer select */}
+        <select
+          value={activeIssuer}
+          onChange={(e) => {
+            setActiveIssuer(e.target.value);
             setSelected((prev) => prev.map(() => null));
           }}
-          onIssuerChange={(issuer) => {
-            setActiveIssuer(issuer);
-            setSelected((prev) => prev.map(() => null));
-          }}
-          totalCards={filteredCards.length}
-        />
+          className="px-3 py-1.5 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 text-black/60 dark:text-white/60 border-none outline-none cursor-pointer hover:bg-black/10 dark:hover:bg-white/10 transition-colors appearance-none pr-6"
+          style={{ backgroundImage: "none" }}
+        >
+          <option value="All Issuers">All Issuers</option>
+          {issuers.map((iss) => (
+            <option key={iss} value={iss}>
+              {iss}
+            </option>
+          ))}
+        </select>
+
+        {/* result count */}
+        <span className="text-black/25 dark:text-white/25 text-xs ml-1">
+          {filteredCards.length} card{filteredCards.length !== 1 ? "s" : ""}
+        </span>
       </div>
 
-      {/* Card Selectors */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 items-start">
+      {/* ── Card Selector Grid ─────────────────────────────────────────────── */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 items-start">
         {selected.map((card, i) => (
-          <div key={i} className="relative">
+          <div key={i} className="relative group/slot">
             <CardSelector
               cards={filteredCards}
               selected={card}
               onSelect={handleSelect(i)}
               placeholder={`Card ${i + 1}`}
-              filterCategory={activeCategory}
-              filterIssuer={activeIssuer}
             />
+            {/* remove-slot button — only when > 2 slots */}
             {selected.length > 2 && (
               <button
                 onClick={() => removeSlot(i)}
-                className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-black/10 dark:bg-white/10 rounded-full text-black/40 dark:text-white/40 hover:bg-black/20 dark:hover:bg-white/20 hover:text-black/80 dark:hover:text-white/80 transition-colors flex items-center justify-center text-xs leading-none"
+                className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-black/10 dark:bg-white/10 rounded-full text-black/40 dark:text-white/40 hover:bg-black/25 dark:hover:bg-white/25 hover:text-black dark:hover:text-white transition-all flex items-center justify-center text-xs leading-none z-20 opacity-0 group-hover/slot:opacity-100"
+                aria-label="Remove slot"
               >
                 ×
               </button>
@@ -94,54 +135,56 @@ export default function Home() {
           </div>
         ))}
 
+        {/* Add card slot */}
         {selected.length < MAX_COMPARE && (
           <button
             onClick={addSlot}
-            className="flex items-center justify-center gap-2 px-4 py-3 border border-dashed border-black/10 dark:border-white/10 rounded-lg text-black/30 dark:text-white/30 text-sm hover:border-black/20 dark:hover:border-white/20 hover:text-black/50 dark:hover:text-white/50 transition-colors"
+            className="rounded-2xl border-2 border-dashed border-black/8 dark:border-white/8 hover:border-black/20 dark:hover:border-white/20 transition-colors flex flex-col items-center justify-center gap-1.5 text-black/20 dark:text-white/20 hover:text-black/40 dark:hover:text-white/40"
+            style={{ aspectRatio: "85.6 / 53.98" }}
           >
-            <span className="text-lg leading-none">+</span>
-            Add card
+            <span className="text-xl font-light leading-none">+</span>
+            <span className="text-[10px] font-medium">Add card</span>
           </button>
         )}
       </div>
 
-      {/* Status line */}
+      {/* ── Status line ───────────────────────────────────────────────────── */}
       {activeCount > 0 && (
-        <div className="mt-5 flex items-center gap-3">
+        <div className="mt-5 flex items-center gap-4">
           <span className="text-black/30 dark:text-white/30 text-xs">
-            Comparing {activeCount} card{activeCount > 1 ? "s" : ""}
+            Comparing{" "}
+            <span className="text-black/60 dark:text-white/60 font-medium">{activeCount}</span>{" "}
+            card{activeCount > 1 ? "s" : ""}
           </span>
           <button
             onClick={() => setSelected(selected.map(() => null))}
-            className="text-black/25 dark:text-white/25 text-xs hover:text-black/50 dark:hover:text-white/50 transition-colors"
+            className="text-black/25 dark:text-white/25 text-xs hover:text-black/55 dark:hover:text-white/55 transition-colors"
           >
             Clear all
           </button>
         </div>
       )}
 
-      {/* Empty state */}
+      {/* ── Empty state ───────────────────────────────────────────────────── */}
       {activeCount === 0 && (
-        <div className="mt-16 text-center">
-          <p className="text-black/20 dark:text-white/20 text-sm">
-            Select up to {MAX_COMPARE} cards to compare
+        <div className="mt-14 text-center">
+          <p className="text-black/20 dark:text-white/20 text-sm mb-2">
+            Select up to {MAX_COMPARE} cards above to compare them side by side
           </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-2">
-            {categories.slice(1).map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setActiveCategory(cat.value)}
-                className="px-3 py-1.5 border border-black/8 dark:border-white/8 rounded-md text-black/30 dark:text-white/30 text-xs hover:border-black/20 dark:hover:border-white/20 hover:text-black/60 dark:hover:text-white/60 transition-colors"
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
+          {(activeCategory !== "all" || activeIssuer !== "All Issuers") && (
+            <button
+              onClick={clearFilters}
+              className="mt-2 text-xs text-black/30 dark:text-white/30 hover:text-black/60 dark:hover:text-white/60 transition-colors underline underline-offset-2"
+            >
+              Clear filters
+            </button>
+          )}
         </div>
       )}
 
-      {/* Comparison Table */}
+      {/* ── Comparison Table ──────────────────────────────────────────────── */}
       <ComparisonTable cards={selected} />
+
     </main>
   );
 }
