@@ -79,7 +79,24 @@ interface CardArtProps {
 }
 
 export default function CardArt({ card, className = "", size = "md" }: CardArtProps) {
-  // Determine if the brand color is very dark (≤ #303030 brightness)
+  if (card.imageUrl) {
+    return (
+      <div
+        className={`relative rounded-2xl overflow-hidden select-none w-full ${className}`}
+        style={{ aspectRatio: "85.6 / 53.98" }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={card.imageUrl}
+          alt={card.name}
+          className="w-full h-full object-cover"
+          draggable={false}
+        />
+      </div>
+    );
+  }
+
+  // Fallback: CSS card art for cards without images
   const hex = card.color.replace("#", "");
   const r = parseInt(hex.slice(0, 2), 16);
   const g = parseInt(hex.slice(2, 4), 16);
@@ -104,13 +121,10 @@ export default function CardArt({ card, className = "", size = "md" }: CardArtPr
       className={`relative rounded-2xl overflow-hidden select-none w-full ${className}`}
       style={{ aspectRatio: "85.6 / 53.98", background: gradient, boxShadow: glow }}
     >
-      {/* Gloss sheen */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "linear-gradient(155deg, rgba(255,255,255,0.12) 0%, transparent 45%)" }}
       />
-
-      {/* Issuer — top left */}
       <div className={`absolute top-0 left-0 right-0 flex items-start justify-between ${pad}`}>
         <span
           className="text-white/75 font-semibold tracking-wide truncate max-w-[80%]"
@@ -119,15 +133,11 @@ export default function CardArt({ card, className = "", size = "md" }: CardArtPr
           {card.issuer}
         </span>
       </div>
-
-      {/* EMV chip — vertically centred, left side */}
       {!sm && (
         <div className="absolute left-3 top-1/2 -translate-y-1/2">
           <Chip />
         </div>
       )}
-
-      {/* Card name + network logo — bottom */}
       <div className={`absolute bottom-0 left-0 right-0 flex items-end justify-between ${pad}`}>
         <div className="min-w-0 flex-1 mr-2">
           <p

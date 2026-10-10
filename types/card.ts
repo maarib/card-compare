@@ -63,5 +63,6 @@ export interface CreditCard {
   creditScoreRequired: "Good" | "Very Good" | "Excellent";
   applyUrl: string;
   color: string;
+  imageUrl?: string;
   notes?: string;
 }

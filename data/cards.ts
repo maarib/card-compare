@@ -24,6 +24,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/passport-visa-infinite-card.html",
     color: "#C41E3A",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/scotiabank_passport_visa_infinite.png",
   },
   {
     id: "scotia-momentum-vi",
@@ -47,6 +48,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-visa-infinite-card.html",
     color: "#C41E3A",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/scotiabank_momentum_visa_infinite.png",
   },
   {
     id: "scotia-gold-amex",
@@ -69,6 +71,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.scotiabank.com/ca/en/personal/credit-cards/american-express/gold-american-express-card.html",
     color: "#C41E3A",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/scotiabank_gold_amex.png",
   },
 
   // ─── TD ────────────────────────────────────────────────────────────────────
@@ -94,6 +97,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.td.com/ca/en/personal-banking/products/credit-cards/travel-rewards/first-class-travel-visa-infinite-card/",
     color: "#34A853",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/td_first_class_travel_visa_infinite.png",
   },
   {
     id: "td-aeroplan-vi",
@@ -117,6 +121,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.td.com/ca/en/personal-banking/products/credit-cards/travel-rewards/aeroplan-visa-infinite/",
     color: "#34A853",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/td_aeroplan_visa_infinite.png",
   },
   {
     id: "td-cashback-vi",
@@ -139,6 +144,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.td.com/ca/en/personal-banking/products/credit-cards/cash-back/cash-back-visa-infinite-card/",
     color: "#34A853",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/td_cash_back_visa_infinite.png",
   },
 
   // ─── RBC ───────────────────────────────────────────────────────────────────
@@ -164,6 +170,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.rbcroyalbank.com/credit-cards/avion-visa-infinite.html",
     color: "#003DA5",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/rbc_avion_visa_infinite.png",
   },
   {
     id: "rbc-cashback-mc",
@@ -183,6 +190,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.rbcroyalbank.com/credit-cards/cash-back-mastercard.html",
     color: "#003DA5",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/rbc_cash_back_mastercard.png",
   },
   {
     id: "rbc-westjet-mc",
@@ -206,6 +214,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.rbcroyalbank.com/credit-cards/westjet-rbc-world-elite-mastercard.html",
     color: "#003DA5",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/rbc_westjet_world_elite.png",
     notes: "Annual companion voucher (economy) included",
   },
 
@@ -231,6 +240,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.americanexpress.com/en-ca/credit-cards/cobalt-card/",
     color: "#2563EB",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/amex_cobalt.png",
     notes: "Monthly $13/mo fee structure. Best earn rate for food & drinks in Canada.",
   },
   {
@@ -253,6 +263,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Excellent",
     applyUrl: "https://www.americanexpress.com/en-ca/credit-cards/platinum-card/",
     color: "#2563EB",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/amex_platinum.jpg",
     notes: "$200 annual travel credit, $100 NEXUS credit, unlimited lounge access.",
   },
   {
@@ -275,6 +286,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Very Good",
     applyUrl: "https://www.americanexpress.com/en-ca/credit-cards/gold-rewards-card/",
     color: "#2563EB",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/amex_gold_rewards_ca.png",
     notes: "$100 annual travel credit included.",
   },
   {
@@ -297,6 +309,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.americanexpress.com/en-ca/credit-cards/simply-cash-preferred-card/",
     color: "#2563EB",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/amex_simply_cash_preferred_ca.png",
   },
 
   // ─── CIBC ──────────────────────────────────────────────────────────────────
@@ -322,6 +335,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.cibc.com/en/personal-banking/credit-cards/travel-rewards-cards/aeroplan-visa-infinite-card.html",
     color: "#8B1A1A",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/cibc_aeroplan_visa_infinite.png",
   },
   {
     id: "cibc-dividend-vi",
@@ -344,6 +358,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.cibc.com/en/personal-banking/credit-cards/cash-back-cards/dividend-visa-infinite-card.html",
     color: "#8B1A1A",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/cibc_dividend_visa_infinite.png",
   },
 
   // ─── BMO ───────────────────────────────────────────────────────────────────
@@ -369,6 +384,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.bmo.com/en-ca/main/personal/credit-cards/bmo-eclipse-visa-infinite-card/",
     color: "#0079C1",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/bmo_eclipse_visa_infinite.png",
     notes: "$50 annual lifestyle credit.",
   },
   {
@@ -391,6 +407,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.bmo.com/en-ca/main/personal/credit-cards/bmo-cashback-mastercard/",
     color: "#0079C1",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/bmo_cashback_mastercard.png",
   },
 
   // ─── PC FINANCIAL ──────────────────────────────────────────────────────────
@@ -414,6 +431,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.pcfinancial.ca/en/credit-cards/world-elite/",
     color: "#C41E3A",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/pc_financial_world_elite.png",
     notes: "4.5% at Shoppers Drug Mart, 3% at Loblaw-banner stores, 3¢/L at Esso/Mobil.",
   },
   {
@@ -434,6 +452,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.pcfinancial.ca/en/credit-cards/mastercard/",
     color: "#C41E3A",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/pc_financial_mastercard.png",
   },
 
   // ─── WEALTHSIMPLE ──────────────────────────────────────────────────────────
@@ -456,6 +475,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.wealthsimple.com/en-ca/visa-card",
     color: "#000000",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/wealthsimple_cash_card.png",
     notes: "Best value when fee waived. 2% flat on everything + 0% FX fee is a rare combo.",
   },
 
@@ -478,6 +498,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.mbna.ca/en/credit-cards/amazon-rewards-credit-card.html",
     color: "#FF9900",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/mbna_amazon_mastercard.png",
     notes: "5% at Amazon.ca + Whole Foods with Prime membership; 2.5% without.",
   },
 
@@ -502,6 +523,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.rogers.com/consumer/banking/credit-card",
     color: "#DA1212",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/rogers_red_world_elite.png",
     notes: "3% cash back on all USD purchases offsets the 0% FX fee. Best no-fee travel companion.",
   },
 
@@ -525,6 +547,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Good",
     applyUrl: "https://www.tangerine.ca/en/products/spending/creditcard/money-back/",
     color: "#FF6600",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/tangerine_money_back.png",
     notes: "Choose 2 categories at 2% (3 if you deposit cash back to Tangerine account). Highly flexible.",
   },
 
@@ -550,6 +573,7 @@ export const cards: CreditCard[] = [
     creditScoreRequired: "Very Good",
     applyUrl: "https://www.nbc.ca/en/personal/credit-cards/world-elite-mastercard.html",
     color: "#E30613",
+    imageUrl: "https://raw.githubusercontent.com/jimabby/card-assets/main/cards/national_bank_world_elite.png",
     notes: "Best travel insurance in Canada — 60 days out-of-province coverage.",
   },
 ];
